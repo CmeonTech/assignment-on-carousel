@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Carousel</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.carocolor {
+  height: 50vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 1s;
+}
+
+button {
+  margin-top: 20px;
+  
+  font-size: 16px;
+  cursor: pointer;
+ margin: auto;
+}
+
+h1 {
+  color: white;
+}
+.assis{
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+
+.ass1 , .ass2{
+    width: 50%;
+}
+
+
+
+</style>
+<body>
+    <!-- Ass1 -->
+              <div class="assis">
+                <div class="ass1">
+                    <div id="carocolor" class="carocolor">
+                        
+                        <h2 id="color-name">Current Color: <span>Change Color</span></h1>
+                    </div>
+
+                    <button id="next-btn" onclick="changeColor()">Next Color</button>
+                    <button id="bac" onclick="bac()">Back</button>
+                </div>   
+
+         <!-- Ass2            -->
+
+                 <div class="ass2">
+                    <div id="changeimage">
+                    <h1 id="carotittle">Countries you may know</h1>
+                    <p id="imagename">This is</p> 
+                    <div id="image-container"></div>   
+                    </div>
+
+                     <button id="btnimage" onclick="ChangeImage()">Change Image</button>
+                      <button id="back" onclick="Back()">Back</button>
+                    </div>
+            </div>
+
+                    
+</body>
+</html>
+<script>
+
+    // script1
+    const colors = ['Red', 'Green', 'Blue', 'Yellow', 'Orange', 'Purple', 'Pink'];
+    const colorNames = ['#FF0000', '#008000', '#0000FF', '#FFFF00', '#FFA500', '#800080', '#FFC0CB'];
+    let currentColorIndex = 0;
+
+    const Carouselco = document.getElementById('carocolor');
+    const displayname = document.getElementById('color-name');
+    const nextBtn = document.getElementById('next-btn');
+
+
+function changeColor() {
+  currentColorIndex = (currentColorIndex + 1) % colors.length; 
+  Carouselco.style.backgroundColor = colorNames[currentColorIndex];
+  displayname.innerHTML = `Current Color: <span>${colors[currentColorIndex]}</span>`;
+}
+function bac() {
+  currentColorIndex = (currentColorIndex - 1 + colors.length) % colors.length; 
+  Carouselco.style.backgroundColor = colorNames[currentColorIndex];
+  displayname.innerHTML = `Current Color: <span>${colors[currentColorIndex]}</span>`;
+}
+
+
+// script2
+const displayflag = ['Australia' ,'Bayelsa','Lagos', 'Lasgidi','Oyo', 'Uk']
+const Img = [
+    '<img src="Austrailia.jpg" alt="Australia"/>', 
+    '<img src="bayelsa.png" alt="Bayelsa"/>', 
+    '<img src="LAGOS.png" alt="Lagos"/>', 
+    '<img src="LAGOS1.gif" alt="Lasgidi"/>', 
+    '<img src="OYO.png" alt="Oyo"/>', 
+    '<img src="UK.jpg" alt="UK"/>'
+];
+let currentimage = 0;
+
+let change = document.getElementById('changeimage')
+let imageName = document.getElementById('imagename')
+let btnimagee = document.getElementById('btnimage')
+let imagecont = document.getElementById('image-container')
+
+function ChangeImage(){
+    currentimage = (currentimage + 1) % displayflag.length;
+    imagecont.innerHTML = Img[currentimage];
+    imageName.innerHTML = `This is ${displayflag[currentimage]}`
+    
+    
+}
+
+function Back(){
+    currentimage = (currentimage - 1 + displayflag.length) % displayflag.length;
+    imagecont.innerHTML = Img[currentimage];
+    imageName.innerHTML = `This is ${displayflag[currentimage]}`
+    
+    
+}
+</script>
